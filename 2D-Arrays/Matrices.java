@@ -73,5 +73,7 @@ public class Matrices {
 
         System.out.println("Largest is " + largestMatrix(matrix));
         System.out.println("Smallest is " + smallestMatrix(matrix));
+
+        sc.close();
     }
 }

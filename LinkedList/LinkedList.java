@@ -105,6 +105,29 @@ public class LinkedList{
         }
     }
 
+    public int itrSearch(int key){
+        Node temp = head;
+        int idx = 0;
+        while(temp != null){
+            if(temp.data == key) return idx;
+            temp = temp.next;
+            idx++;
+        }
+        return -1;
+    }
+
+    public int helperSearch(Node temp, int key){
+        if(temp == null) return -1;
+        if(temp.data == key) return 0;
+        int idx = helperSearch(temp.next, key);
+        if(idx == -1) return -1;
+        return idx+1;
+    }
+
+    public int rcrSearch(int key){
+        return helperSearch(head, key);
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(1);
@@ -123,5 +146,9 @@ public class LinkedList{
         ll.print();
         ll.removeLast();
         ll.print();
+        System.out.println(ll.itrSearch(7));
+        System.out.println(ll.itrSearch(10));
+        System.out.println(ll.rcrSearch(5));
+        System.out.println(ll.rcrSearch(11));
     }
 }

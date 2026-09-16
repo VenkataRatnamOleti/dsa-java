@@ -202,6 +202,18 @@ public class LinkedList{
         return;
     }
 
+    public boolean isCycle(){
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast) return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(1);
@@ -238,5 +250,6 @@ public class LinkedList{
         ll.addFirst(1);
         ll.print();
         System.out.println(ll.isPalindrome());
+        System.out.println("Is Cycle Formed : " + ll.isCycle());
     }
 }

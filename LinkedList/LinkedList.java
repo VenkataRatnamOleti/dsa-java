@@ -128,6 +128,80 @@ public class LinkedList{
         return helperSearch(head, key);
     }
 
+    public void reverse(){
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+        return;
+    }
+
+    public Node findMid(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public boolean isPalindrome(){
+        if(head == null || head.next == null){
+            return true;
+        }
+
+        Node mid = findMid(head);
+
+        Node prev = null;
+        Node curr = mid;
+        Node next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right = prev;
+        Node left = head;
+        while(right != null){
+            if(right.data != left.data) return false;
+            right = right.next;
+            left = left.next;
+        }
+        return true;
+    }
+
+    public void replaceNthNodefromEnd(int n){
+        int size = 0;
+        Node temp = head;
+        while(temp != null){
+            temp = temp.next;
+            size++;
+        }
+        if(n == size){
+            head = head.next;
+            return;
+        }
+
+        int i = 1;
+        int iFind = size - n;
+        temp = head;
+        while(i < iFind){
+            temp = temp.next;
+            i++;
+        }
+        temp.next = temp.next.next;
+        return;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(1);
@@ -150,5 +224,19 @@ public class LinkedList{
         System.out.println(ll.itrSearch(10));
         System.out.println(ll.rcrSearch(5));
         System.out.println(ll.rcrSearch(11));
+        ll.print();
+        ll.reverse();
+        ll.print();
+        ll.replaceNthNodefromEnd(1);
+        ll.replaceNthNodefromEnd(1);
+        ll.replaceNthNodefromEnd(1);
+        ll.replaceNthNodefromEnd(1);
+        ll.replaceNthNodefromEnd(1);
+        ll.replaceNthNodefromEnd(1);
+        ll.print();
+        ll.addFirst(8);
+        ll.addFirst(1);
+        ll.print();
+        System.out.println(ll.isPalindrome());
     }
 }

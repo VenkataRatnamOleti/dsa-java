@@ -52,7 +52,32 @@ public class Q2{
         }
     }
 
-    
+    public static void swappNodes(int a, int b){
+        Node prevA = null;
+        Node prevB = null;
+        Node tempA = head;
+        Node tempB = head;
+
+        while(tempA != null && tempA.data != a){
+            prevA = tempA;
+            tempA = tempA.next;
+        }
+
+        while(tempB != null && tempB.data != b){
+            prevB = tempB;
+            tempB = tempB.next;
+        }
+
+        if(tempA == null || tempB == null) return;
+
+        prevA.next = prevB.next;
+        prevB.next = tempA;
+        Node temp = tempA.next;
+        tempA.next = tempB.next;
+        tempB.next = temp;
+    }
+
+
     public static void main(String[] args) {
         Q2 list = new Q2();
         list.addLast(1);
@@ -67,7 +92,8 @@ public class Q2{
         list.addLast(10);
         list.print();
         // deleteMAfterN(list, 2, 2);
-        deleteMAfterN(list, 3, 2);
+        // deleteMAfterN(list, 3, 2);
+        swappNodes(4, 8);
         list.print();
     }
 }

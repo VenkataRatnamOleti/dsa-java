@@ -1,3 +1,4 @@
+package Problems.Sortings;
 public class Questions {
 
     public static void bubbleSort(int[] arr){

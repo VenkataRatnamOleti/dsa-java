@@ -1,3 +1,4 @@
+package Problems.Strings;
 import java.util.Arrays;
 public class Problem5 {
 

@@ -1,4 +1,4 @@
-package ObjectOrientedProgramming.Problems;
+package Problems.ObjectOrientedProgramming;
 
 public class Problem1 {
 

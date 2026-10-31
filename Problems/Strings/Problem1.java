@@ -16,6 +16,6 @@ public class Problem1 {
         }
 
         System.out.print("No. of Vowels are " + count);
-
+        sc.close();
     }
 }
